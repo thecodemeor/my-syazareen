@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@use "mozek-angular/src/styles" as moz;
+
+body, html {
+    font-family: "Google Sans", sans-serif;
+    color: black;
+    background-color: #ffdde6;
+
+    img {
+        user-select: none;
+        pointer-events: none;
+        -webkit-user-drag: none;
+    }
+}
