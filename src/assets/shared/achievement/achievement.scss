@@ -1,0 +1,306 @@
+:host {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.shelf { filter: drop-shadow(8px 2px 0 rgba(0, 0, 0, 0.3));}
+
+.trophy,
+.radio {
+    cursor: pointer;
+}
+
+.trophy {
+    filter: drop-shadow(7px 3px 0 rgba(0, 0, 0, 0.3));
+    animation: fall-trophy 0.8s ease-in-out forwards;
+    @keyframes fall-trophy {
+        0% { transform: translateY(0px);}
+        50% { transform: translateY(-40px);}
+        100% { transform: translateY(0);}
+    }
+}
+
+.radio-set {
+    filter: drop-shadow(8px 3px 0 rgba(0, 0, 0, 0.3));
+    animation: fall-radio 0.8s ease-in-out forwards;
+    animation-delay: 0.2s;
+    @keyframes fall-radio {
+        0% { transform: translateY(0px);}
+        50% { transform: translateY(-20px);}
+        100% { transform: translateY(0);}
+    }
+}
+
+/* =========================
+   TROPHY SHINY STAR
+========================= */
+
+.shiny {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(0);
+    opacity: 0;
+    will-change: transform, opacity;
+    filter: none;
+    pointer-events: none;
+}
+
+.rotate {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.shiny-show {
+    animation: shinyPopIn 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.shiny-show .rotate {
+    animation: shinyRotate 9s linear infinite;
+}
+
+.shiny-leave {
+    animation: shinyPopOut 220ms ease-in forwards;
+}
+
+.shiny-leave .rotate {
+    animation: none;
+}
+
+/* =========================
+   TROPHY GLASS REFLECTION
+========================= */
+
+.trophy-glass-shine {
+    pointer-events: none;
+}
+
+.trophy-glass-shine-rect {
+    fill: url(#trophyGlassShine);
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    filter: blur(0.5px);
+}
+
+/* trigger shine sweep */
+.shiny-show ~ .trophy .trophy-glass-shine-rect,
+.trophy:hover .trophy-glass-shine-rect {
+    animation: trophyGlassSweep 0.6s ease-out forwards;
+}
+
+/* =========================
+   RADIO BODY
+========================= */
+
+.radio {
+    transform-box: fill-box;
+    transform-origin: 50% 88%;
+    will-change: transform;
+}
+
+.radio-playing {
+    animation: radioBreathing 2s ease-in-out infinite;
+}
+
+/* optional tiny glow when on */
+.radio-playing .on-button {
+    filter: drop-shadow(0 0 3px rgba(255, 60, 60, 0.7));
+    fill: red !important;
+}
+
+/* =========================
+   MUSIC NOTES
+========================= */
+
+.music-notes {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.music-note {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.radio-playing .music-notes {
+    opacity: 1;
+}
+
+.radio-playing .note-1 {
+    animation: floatNote1 2.1s ease-out infinite;
+}
+
+.radio-playing .note-2 {
+    animation: floatNote2 2.5s ease-out infinite 0.35s;
+}
+
+.radio-playing .note-3 {
+    animation: floatNote3 2.3s ease-out infinite 0.7s;
+}
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes shinyPopIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes shinyPopOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes shinyRotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+@keyframes trophyGlassSweep {
+    0% {
+        opacity: 0;
+        transform: translateX(-38px) skewX(-20deg);
+    }
+    15% { opacity: 0.2;}
+    35% { opacity: 1;}
+    100% {
+        opacity: 0;
+        transform: translateX(92px) skewX(-20deg);
+    }
+}
+
+@keyframes radioBreathing {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.05);}
+}
+
+@keyframes floatNote1 {
+    0% {
+        opacity: 0;
+        transform: translate(0, 10px) scale(0.7) rotate(-8deg);
+    }
+    15% { opacity: 1;}
+    70% { opacity: 1;}
+    100% {
+        opacity: 0;
+        transform: translate(-8px, -34px) scale(1.05) rotate(8deg);
+    }
+}
+
+@keyframes floatNote2 {
+    0% {
+        opacity: 0;
+        transform: translate(0, 12px) scale(0.75) rotate(6deg);
+    }
+    15% { opacity: 1;}
+    70% { opacity: 1;}
+    100% {
+        opacity: 0;
+        transform: translate(6px, -42px) scale(1.08) rotate(-10deg);
+    }
+}
+
+@keyframes floatNote3 {
+    0% {
+        opacity: 0;
+        transform: translate(0, 8px) scale(0.68) rotate(-4deg);
+    }
+    15% { opacity: 1;}
+    70% { opacity: 1;}
+    100% {
+        opacity: 0;
+        transform: translate(10px, -30px) scale(1) rotate(12deg);
+    }
+}
+
+/* =========================
+   SVG COLORS / STROKES
+========================= */
+
+.cls-1 {
+    fill: rgba(150, 0, 0);
+    stroke-width: 2px;
+}
+
+.cls-1,
+.cls-2,
+.cls-3,
+.cls-4,
+.cls-5,
+.cls-6,
+.cls-7,
+.cls-8 { stroke-miterlimit: 8;}
+
+.cls-1,
+.cls-2,
+.cls-3,
+.cls-4,
+.cls-6,
+.cls-7,
+.cls-8 { stroke: #000;}
+
+.cls-9 { fill: #efc348;}
+
+.cls-9,
+.cls-10,
+.cls-11,
+.cls-12 { stroke-width: 0px;}
+
+.cls-2,
+.cls-4,
+.cls-8 { stroke-width: 5px;}
+
+.cls-2,
+.cls-7 { fill: #efb600;}
+
+.cls-3 { stroke-width: 6px;}
+
+.cls-3,
+.cls-6 { fill: #dea975;}
+
+.cls-4,
+.cls-10 { fill: none;}
+
+.cls-5 {
+    fill: #d6d6d6;
+    stroke: #8c8c8c;
+    stroke-linecap: round;
+}
+
+.cls-6,
+.cls-7 { stroke-width: 5px;}
+
+.cls-13 { clip-path: url(#clippath);}
+
+.cls-11 { fill: #d1d3d4;}
+
+.cls-12 { fill: #c6c6c6;}

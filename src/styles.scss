@@ -3,11 +3,13 @@
 body, html {
     font-family: "Google Sans", sans-serif;
     color: black;
-    background-color: #822d4c;
+    background-color: #ffdde6;
 
     img {
-        user-select: none;
-        pointer-events: none;
+
         -webkit-user-drag: none;
+        user-select: none;
+        -webkit-user-select: none;
+        pointer-events: none;
     }
 }

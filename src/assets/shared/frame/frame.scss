@@ -1,0 +1,91 @@
+:host {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(5px 3px 0 rgba(0, 0, 0, 0.3));
+    overflow: visible;
+}
+
+.frame-set {
+    transform-box: fill-box;
+    transform-origin: top center;
+    animation: frameSwing 0.8s ease-in-out forwards;
+}
+
+.frame {
+    cursor: pointer;
+    transform-box: fill-box;
+    transform-origin: top center;
+    will-change: transform;
+}
+
+.frame-swing {
+    animation: frameSwing 900ms ease-in-out;
+}
+
+@keyframes frameSwing {
+    0%   { transform: rotate(0deg); }
+    18%  { transform: rotate(-5deg); }
+    36%  { transform: rotate(4deg); }
+    54%  { transform: rotate(-3deg); }
+    72%  { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* glass reflection */
+.frame-glass-shine {
+    pointer-events: none;
+}
+
+.frame-glass-shine-rect {
+    fill: url(#frameGlassShine);
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    filter: blur(0.5px);
+}
+
+.frame-glass-shine-active {
+    animation: frameGlassSweep 0.7s ease-out forwards;
+}
+
+@keyframes frameGlassSweep {
+    0% {
+        opacity: 0;
+        transform: translateX(-34px) skewX(-20deg);
+    }
+    15% {
+        opacity: 0.2;
+    }
+    35% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(92px) skewX(-20deg);
+    }
+}
+
+.cls-1 {
+    fill: transparent;
+    stroke-width: 4px;
+}
+
+.cls-1,
+.cls-2 {
+    stroke: #231f20;
+    stroke-miterlimit: 10;
+}
+
+.cls-2 {
+    fill: #edc79d;
+    stroke-width: 6px;
+}

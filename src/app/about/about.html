@@ -1,0 +1,53 @@
+<div class="spark-wrapper" #sparkWrapper>
+    <canvas #sparkCanvas class="spark-canvas"></canvas>
+
+    <audio #hoverSfx preload="auto">
+        <source src="assets/audio/blob.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="container">
+        <div class="header">
+            <div class="frame-layout">
+                <img src="assets/images/myself.jpeg" alt="My Self">
+            </div>
+
+            <div class="name-card">
+                <h2>Syazareen</h2>
+                <h4>UI/UX Designer</h4>
+                <div class="resume-button">
+                    <button
+                        class="btn-resume"
+                        (mouseenter)="onResumeHover()"
+                        (click)="onResumeClick()"
+                    >
+                        <span>Download Resume</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="paragraph">
+            <h5>
+                I’m a UI/UX designer who loves creating experiences that feel bright, playful, and full of life. I enjoy turning simple ideas into something engaging, where every interaction, transition, and detail comes together to make people smile.
+                <br><br>
+                I often mix visual design, user flows, and a bit of motion to give my work more personality. For me, design is not just about how it looks, but how it feels and behaves. There’s something really satisfying about seeing a concept grow from a rough idea into a smooth, intuitive experience.
+                <br><br>
+                My tools are Figma, Adobe Illustrator, Photoshop, and I explore motion with After Effects whenever I want to add a little extra magic.
+                <br><br>
+                I enjoy sketching, exploring new ideas, curating inspiration, and occasionally getting lost in music while working on something fun.
+                <br><br>
+                I hope to keep growing, exploring new styles, and creating work that not only looks beautiful but also brings a little joy and meaning to the people who experience it.
+            </h5>
+
+            <h4>~ Bismillah ~</h4>
+        </div>
+    </div>
+</div>
+
+<div
+    class="back-to-home"
+    (mouseenter)="onBackHover()"
+    (click)="backToHome()"
+>
+    <moz-icon size="30" color="#ff6ec7">home</moz-icon>
+</div>

@@ -1,0 +1,38 @@
+:host {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.cat {
+    cursor: grab;
+}
+.cat, .cat * { pointer-events: auto;}
+
+.pupil-wrap {
+    pointer-events: none;
+    will-change: transform;
+}
+
+.st0 { fill: #262626; stroke: #231f20; stroke-width: 8; stroke-miterlimit: 10; }
+.st1 { fill: #ec8a43; stroke: #231f20; stroke-width: 4; stroke-miterlimit: 10; }
+.st2 { fill: #a75621; stroke: #231f20; stroke-width: 4; stroke-miterlimit: 10; }
+.st3 { fill: #ffffff; }
+.st4 { fill: #d1d3d4; }
+.st5 { fill: none; stroke: #231f20; stroke-width: 4; stroke-miterlimit: 10; }
+.st6 { fill: #231f20; }
+.st7 { fill: #ec661d; }
+
+.pupil-wrap {
+    pointer-events: none;
+    will-change: transform;
+    transform-box: fill-box;
+    transform-origin: center;
+}

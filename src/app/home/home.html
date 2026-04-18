@@ -1,3 +1,69 @@
-<div class="container">
+<div class="click-spark-wrapper" #sparkWrapper>
+    <canvas #sparkCanvas class="spark-canvas"></canvas>
     
+    <div class="background-layout">
+        <div class="main-text">CREATIVE<br>DESIGNER</div>
+    </div>
+
+    <audio #hoverSfx preload="auto">
+        <source src="assets/audio/blob.mp3" type="audio/mpeg" />
+    </audio>
+    <audio #meowSfx preload="auto">
+        <source src="assets/audio/meow.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="container">
+        <div class="floor-layout"></div>
+
+        <div class="frame-layout">
+            <frame-component
+                (hoveringChange)="onFrameHover($event)"
+                (frameClick)="onFrameClick()"
+            ></frame-component>
+        </div>
+
+        <div class="achievement-layout">
+            <achievement-component
+                [isMusicPlaying]="isMusicPlaying"
+                (hoveringChange)="onAchievementHover($event)"
+                (radioClick)="onRadioToggle()"
+                (trophyClick)="onTrophyClick()"
+            ></achievement-component>
+        </div>
+        <div class="desk-layout">
+            <desk-component
+                (hoveringChange)="onDeskHover($event)"
+                (imacClick)="onImacClick()"
+            ></desk-component>
+        </div>
+
+        <div class="plant-layout">
+            <img src="assets/images/others/flora.svg" alt="Plant">
+        </div>
+        
+        <div class="cat-layout">
+            <cat-animation
+                [freeze]="isDeskHovered || isAchievementHovered || isFrameHovered"
+                (catTouchChange)="onCatTouch($event)"
+            ></cat-animation>
+        
+            @if (lookAtMe) {
+                <div class="dialog">
+                    <div class="dialog-text">
+                        <h5>{{ catDialogText(catDialogTopic) }}</h5>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (screen() === 'mobile') {
+        <div class="navbar">
+            @for (item of navbar; track $index) {
+                <button (click)="routerPage(item.router)">
+                    <moz-icon size="40" color="#ff6ec7">{{ item.icon }}</moz-icon>
+                </button>
+            }
+        </div>
+    }
 </div>

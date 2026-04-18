@@ -1,7 +1,13 @@
-<div class="background-layout">
-  <div class="main-text">
-    GRAPHIC<br>DESIGNER
-  </div>
+<audio #bgMusic loop>
+    <source src="assets/audio/bossa_nova.mp3" type="audio/mpeg" />
+</audio>
+<div class="route-overlay">
+    <svg
+        class="route-overlay__svg"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+    >
+        <path #overlayPath class="route-overlay__path"></path>
+    </svg>
 </div>
-
-<router-outlet/>
+<router-outlet></router-outlet>

@@ -1,0 +1,57 @@
+<div class="spark-wrapper" #sparkWrapper>
+    <canvas #sparkCanvas class="spark-canvas"></canvas>
+
+    <audio #hoverSfx preload="auto">
+        <source src="assets/audio/blob.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="container">
+        <div class="header">
+            <div class="name-card">
+                <h2>Portfolio</h2>
+                <h4>Syazareen Nafisah</h4>
+            </div>
+        </div>
+
+        <div class="content">
+            @for (item of portfolioItems; track item.id) {
+                <div
+                    class="work-card"
+                    (click)="openPreview(item)"
+                    (mouseenter)="onCardHover()"
+                >
+                    <img [src]="item.image" [alt]="item.title">
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (selectedItem) {
+        <div class="preview-overlay" (click)="closePreview()">
+            <div class="preview-modal" (click)="$event.stopPropagation()">
+                <button class="close-button" type="button" (click)="closePreview()">
+                    <moz-icon size="45" color="#ffffff">close_circle</moz-icon>
+                </button>
+
+                <img
+                    class="preview-image"
+                    [src]="selectedItem.image"
+                    [alt]="selectedItem.title"
+                >
+
+                <div class="preview-body">
+                    <h3>{{ selectedItem.title }}</h3>
+                    <p>{{ selectedItem.description }}</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div
+    class="back-to-home"
+    (mouseenter)="onBackHover()"
+    (click)="backToHome()"
+>
+    <moz-icon size="30" color="#ff6ec7">home</moz-icon>
+</div>
