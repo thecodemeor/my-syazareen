@@ -39,12 +39,12 @@ type LetterKey = 'A' | 'C' | 'D' | 'E' | 'G' | 'H' | 'I' | 'N' | 'P' | 'R' | 'S'
         :host {
             display: block;
             width: 100%;
-            min-height: 100vh;
+            min-height: 100dvh;
         }
 
         .title-wrap {
             display: flex;
-            min-height: 100vh;
+            min-height: 100dvh;
             flex-direction: column;
             justify-content: center;
             align-items: center;
