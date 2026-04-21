@@ -1,4 +1,4 @@
-<table width="100%">
+<table width="100%" align="center" bgcolor="#ffdde6">
     <tr>
         <td align="center" bgcolor="#ffdde6" style="padding:20px;">
             <img src="./src/assets/images/background.png" width="400" />
