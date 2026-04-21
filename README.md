@@ -1,7 +1,7 @@
-<table align="center">
+<table width="100%">
     <tr>
         <td align="center" bgcolor="#ffdde6" style="padding:20px;">
-            <img src="./src/assets/images/background.png" width="250" />
+            <img src="./src/assets/images/background.png" width="400" />
         </td>
     </tr>
 </table>
