@@ -52,12 +52,20 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('sparkWrapper')
     private sparkWrapperRef!: ElementRef<HTMLDivElement>;
 
+    @ViewChild('loadingPage')
+    private loadingPageRef!: ElementRef<HTMLDivElement>;
+
     public isDeskHovered = false;
     public isAchievementHovered = false;
     public isFrameHovered = false;
     public isCatTouched = false;
     public isMusicPlaying = false;
     public catDialogTopic = '';
+
+    public hideLoader = false;
+
+    private loaderRadius = 0;
+    private loaderAnimationId?: number;
 
     private sparks: Spark[] = [];
     private animationFrameId?: number;
@@ -112,6 +120,10 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
             meowSfx.volume = 1;
             meowSfx.load();
         }
+
+        requestAnimationFrame(() => {
+            this.animateLoaderHole();
+        });
     }
 
     ngOnDestroy(): void {
@@ -123,6 +135,10 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
         if (this.animationFrameId) {
             cancelAnimationFrame(this.animationFrameId);
+        }
+
+        if (this.loaderAnimationId) {
+            cancelAnimationFrame(this.loaderAnimationId);
         }
     }
 
@@ -198,6 +214,26 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
     onRadioToggle(): void {
         this.musicService.toggle();
+    }
+
+    private animateLoaderHole(): void {
+        const loadingPage = this.loadingPageRef?.nativeElement;
+        if (!loadingPage) return;
+
+        const viewportRadius = Math.hypot(window.innerWidth, window.innerHeight);
+
+        const grow = (): void => {
+            this.loaderRadius += 28;
+            loadingPage.style.setProperty('--r', `${this.loaderRadius}px`);
+
+            if (this.loaderRadius < viewportRadius) {
+                this.loaderAnimationId = requestAnimationFrame(grow);
+            } else {
+                this.hideLoader = true;
+            }
+        };
+
+        this.loaderAnimationId = requestAnimationFrame(grow);
     }
 
     private playHoverSound(): void {

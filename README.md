@@ -1,5 +1,5 @@
 <p align="center">
-    <a><img src="./src/assets/images/menu/pizza/big-bang.svg" alt="Logo" width="250" height="auto"></a>
+    <a><img src="./src/assets/images/background.png" alt="Logo" width="250" height="auto"></a>
 </p>
 
 <h1 align="center">Wifey's Portfolio</h1>
